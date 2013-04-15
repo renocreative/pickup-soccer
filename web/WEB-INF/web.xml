@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>Pickup Soccer Application</display-name>
+    <servlet>
+        <servlet-name>GameController</servlet-name>
+        <servlet-class>Servlets.GameController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjaxController</servlet-name>
+        <servlet-class>Servlets.AjaxController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjaxController</servlet-name>
+        <url-pattern>/AjaxController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GameController</servlet-name>
+        <url-pattern>/game/*</url-pattern>
+        <url-pattern>/user/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>game/home.jsp</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <param-name>PARAMETER_ENCODING</param-name>
+        <param-value>UTF-8</param-value>
+    </context-param>
+</web-app>

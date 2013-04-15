@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/DAL
+END
+HibernateUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/pickupsoccer/!svn/ver/6/PickupSoccerApplication/src/java/DAL/HibernateUtil.java
+END
+Userprofile.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/Userprofile.java
+END
+User.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/User.hbm.xml
+END
+Recurrentgame.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/Recurrentgame.java
+END
+Userprofile.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/Userprofile.hbm.xml
+END
+DBHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/DAL/DBHelper.java
+END
+Recurrentgame.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/Recurrentgame.hbm.xml
+END
+Location.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/Location.java
+END
+Game.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/pickupsoccer/!svn/ver/18/PickupSoccerApplication/src/java/DAL/Game.java
+END
+Location.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/Location.hbm.xml
+END
+Game.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/DAL/Game.hbm.xml
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/pickupsoccer/!svn/ver/13/PickupSoccerApplication/src/java/DAL/User.java
+END

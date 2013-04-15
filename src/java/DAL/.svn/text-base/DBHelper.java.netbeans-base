@@ -1,0 +1,156 @@
+package DAL;
+
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import java.util.Date;
+/**
+ *
+ * @author RBougueng
+ */
+public class DBHelper {
+    
+    Session session = null;
+
+    public DBHelper() {
+        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
+    //DB request against user objects
+    public List<User> getAllUsers() {
+        List<User> userList = null;
+        try {            
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("from User");
+            userList = (List<User>) query.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+
+    }
+
+    public User getUser(String email){
+        List<User> userList = null;
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from User where email =" + email);
+            userList = (List<User>) query.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userList.get(0);
+    }
+
+    public boolean saveOrUpdateUser(User user){
+        //persist the User instance in the DB
+        org.hibernate.Transaction tx = session.beginTransaction();
+        session.saveOrUpdate(user);
+        session.flush();
+        tx.commit();
+
+        session.close();
+        return true;
+    }
+
+    public boolean deleteUser(String email){
+        User user = getUser(email);
+
+        //Delete the Game instance
+        session.beginTransaction();
+        session.delete(user);
+        session.flush();
+
+        return true;
+    }
+
+    //DB request against game objects
+    public List<Game> getAllGames(){
+        List<Game> gameList = null;
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Game");
+            gameList = (List<Game>) query.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return gameList;
+    }
+
+    public Game getGame(String location, Date dateTime){
+        List<Game> gameList = null;
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Game where location =" + location
+                    +" AND dateHeure =" + dateTime);
+            gameList = (List<Game>) query.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return gameList.get(0);
+    }
+
+ 
+
+
+    public boolean saveOrUpdateGame(Game game){
+        //persist the Game instance in the DB
+        org.hibernate.Transaction tx = session.beginTransaction();
+
+        game.setGameState(2);
+
+        session.beginTransaction();
+
+        session.saveOrUpdate(game);
+
+        tx.commit();
+        return true;
+    }
+
+    public boolean deleteGame(String location, Date dateTime){
+        Game game = getGame(location, dateTime);
+
+        //Delete the Game instance
+        session.beginTransaction();
+        session.delete(game);
+        session.flush();
+
+        return true;
+    }
+
+    public List<Location> getLocations(String locationName) {
+        List<Location> locationList = null;
+        try {
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("from Location");
+            locationList = (List<Location>) query.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return locationList;
+
+    }
+
+    public Location getLocation(String location, Date dateTime){
+        List<Location> locationList = null;
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Location where fieldName =" + location
+                    +" AND dateHeure =" + dateTime);
+            locationList = (List<Location>) query.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return locationList.get(0);
+    }
+
+}

@@ -1,0 +1,131 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package Servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.beanutils.BeanUtils;
+import DAL.User;
+import DAL.DBHelper;
+
+/**
+ *
+ * @author Renaud
+ */
+public class UserController extends HttpServlet {
+   
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        DBHelper db = new DBHelper();
+        try {
+            String nextPage = null;
+
+            //Identify the business process to execute
+            String operation = request.getParameter("operation");
+            
+            if(operation == null){
+                Object button = request.getAttribute("submit");
+                    if (button != null){
+                        String submit = (String)button;
+
+                        if (submit.equals("Login")){
+                            //Create a User object with form inputs
+                            User user = new User();
+                            try{
+                                BeanUtils.populate(user, request.getParameterMap());
+                            }catch(Exception e){
+                                //System.err("CreateGame - Populating Bean - IllegalAccessException");
+                            }
+                            //Get the equivalent User object from the DB
+                            String email = user.getEmail();
+                            User authUser = db.getUser(email);
+
+                            //Authenticate against the authUser object
+                            if(user.equals(authUser)){
+                                //Create user session
+                            }else{
+                                //Return validation info
+                            }
+                            
+                            //Define the page to render to the user
+                            nextPage = "Home.jsp";
+                    }else if (submit.equals("Register")){
+                            //Create a User object with form inputs
+                            User user = new User();
+                            try{
+                                BeanUtils.populate(user, request.getParameterMap());
+                            }catch(Exception e){
+                                //System.err("CreateGame - Populating Bean - IllegalAccessException");
+                            }
+                            //Persist the object in the DB
+                            db.saveOrUpdateUser(user);
+                            //Define the page to render to the user
+                            nextPage = "Home.jsp";
+                        }
+                    }
+            }else{
+                nextPage = "Home.jsp";
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+            dispatcher.forward(request, response);
+
+        } finally {
+            out.close();
+        }
+    } 
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /** 
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        processRequest(request, response);
+    } 
+
+    /** 
+     * Handles the HTTP <code>POST</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /** 
+     * Returns a short description of the servlet.
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

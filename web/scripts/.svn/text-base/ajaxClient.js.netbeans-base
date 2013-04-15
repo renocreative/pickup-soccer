@@ -1,0 +1,55 @@
+
+function suggest( event ) {
+        //alert("suggest");
+        var searchValue = null;
+
+        searchValue = this.value;
+        //alert(searchValue);
+
+        var xhr = new XMLHttpRequest();
+        if ( xhr ) {
+        xhr.open( "POST", "AjaxController", true );
+        xhr.onreadystatechange = function () {displaySuggestion( xhr );};
+        xhr.setRequestHeader( "Content-Type", "application/x-www-form-urlencoded" );
+        
+        xhr.send( "suggestFor=" + searchValue );
+        }
+        return;
+        //msg = event.target.nodeName + ":: ";
+        //msg = msg + event.type;
+        //alert( msg );
+    }
+
+function displaySuggestion( connection ) {
+    //alert("displaySuggestion：" +connection.readyState + " " + connection.status);
+
+    var suggestion = null;
+    var suggestionField = null;
+    if ( connection.readyState == 4 && connection.status == 200 ) {
+        //alert("ok");
+        suggestionField = document.getElementById( "suggestion" );
+        //alert(suggestionField);
+        //alert(connection);
+
+        var xmlResp = connection.responseXML;
+        //alert(xmlResp);
+        if(xmlResp != null){
+            suggestion = connection.responseXML.documentElement;
+        }else{
+            suggestion = "Error during connection to server...";
+        }
+        //alert(suggestion.nodeType);
+        //alert(suggestion.nodeValue);
+        //alert(suggestion.childNodes[0].nodeType);
+        //alert(suggestion.childNodes[0].nodeValue);
+        //alert(suggestion);
+        //alert(suggestionField.firstChild);
+        //alert(suggestionField.firstChild.wholeText);
+
+        //if(suggestionField.innerHTML.match("")){
+          //  alert("match");
+            //suggestion = "";
+        //}
+        suggestionField.innerHTML = suggestion;
+    }
+}

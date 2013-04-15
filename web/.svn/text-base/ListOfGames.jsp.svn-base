@@ -1,0 +1,174 @@
+<%-- 
+    Document   : ListOfGames
+    Created on : 25-Mar-2010, 8:18:44 PM
+    Author     : Renaud
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List,DAL.Game"%>
+<!--
+
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Tastelessly
+Description: A very light design suitable for community sites and blogs.
+Version    : 1.0
+Released   : 20080122
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>List of games</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="#">Home</a></li>
+			<li><a href="GameController/operation=listOfGames">Pickup Soccer Games</a></li>
+			<li><a href="#">Best Fields/Locations</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+	<div id="search">
+		<form id="searchform" method="get" action="#">
+			<fieldset>
+			<input id="s" type="text" name="s" value="" class="text" />
+			<input id="x" type="submit" value="Search" class="button" />
+			</fieldset>
+		</form>
+	</div>
+</div>
+<div id="logo">
+	<h1><a href="#">Pickup Soccer</a></h1>
+	<h2>In Ottawa/Gatineau</h2>
+	</div>
+<!-- end header -->
+<hr />
+<!-- start page -->
+<div id="page">
+
+	<!-- start sidebar one -->
+	<div id="sidebar1" class="sidebar">
+		<ul>
+			<li id="recent-posts">
+				<h2>News</h2>
+				<p class="links"><a href="#" class="comments">Comments (33)</a> &nbsp;&nbsp;&nbsp; <!-- <a href="#" class="permalink">Permalink</a> --></p>
+                <ul>
+					<li>
+						<h3><a href="#">NATIONAL</a></h3>
+						<h4><a href="#">New Captain for the Team Canada</a></h4>
+						<p> Toronto FC's midfielder Dwayne De Rosario has been announced to drive the National team as the new captain. <a href="#">More&hellip;</a></p>
+					</li>
+					<li>
+						<h3>INTERNATIONAL</h3>
+						<h4><a href="#">Fifa World Cup Official Calendar</a></h4>
+						<p>As everybody is getting excited about the Ultimate Competition happening every four years of a century. The Fifa announced yesterday the <a href="http://www.fifa.com/aboutfifa/calendar/events.html">official calendar</a>! <a href="#">More&hellip;</a></p>
+					</li>
+					<li>
+						<h4><a href="#">CAN 2010</a></h4>
+						<p>Egypt imposed their supremacy over the african continent. They demonstrated incredible skills beating three top teams: QF - Cameroon(3-1), SF - Algeria(4-0), F - Ghana(1-0). The Pharaons are Kings, unfortunately not qualified for the world cup. <a href="#">More&hellip;</a></p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar one -->
+
+	<!-- start content -->
+	<div id="content">
+		<div class="post">
+			<h1 class="title">Pickup Games Today</h1>
+			<p class="meta"><small>Updated on February 08th, 2010 by <a href="#">Admin</a></small></p>
+			<p class="links"><a href="GameController?operation=createGame" class="comments">Schedule a Pickup Game </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="GameController?operation=listOfGames" class="permalink">See More Games</a></p>
+
+               <% List<Game> games = (List<Game>)request.getAttribute("games");
+               if (games != null) {
+                        String formURL = "OrderServlet";
+                        // Pass URLs that reference own site through encodeURL.
+                        formURL = response.encodeURL(formURL);
+                    for (Game game: games) {
+                %>
+                            <div class="entry">
+                                <p><strong><a href="#"><%= game.getGameId() %></a></strong></p>
+                                <p><%= game.getDateHeure().toString()%>, <a href="http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=dome&sll=45.383693,-75.697865&sspn=0.125631,0.363579&ie=UTF8&hq=dome&hnear=&ll=45.380849,-75.805321&spn=0.119609,0.363579&z=12&iwloc=A"><%= game.getLocation().getFieldName() %></a></p>
+                            </div>
+                        <%}
+                    }else {%>
+                            No games created yet.
+                  <%} %>
+            <div class="entry">
+			  <p><strong><a href="#">Liquid Sex </a></strong></p>
+			  <p>Tuesday 09th February 2010 at 2PM, <a href="http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=dome&sll=45.383693,-75.697865&sspn=0.125631,0.363579&ie=UTF8&hq=dome&hnear=&ll=45.380849,-75.805321&spn=0.119609,0.363579&z=12&iwloc=A">Kanata Soccer Dome</a></p>
+                <!-- <div class="map">
+                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.ca/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=dome&amp;sll=45.383693,-75.697865&amp;sspn=0.125631,0.363579&amp;ie=UTF8&amp;hq=dome&amp;hnear=&amp;ll=45.379161,-75.895958&amp;spn=0.119609,0.363579&amp;z=12&amp;iwloc=A&amp;cid=3745397187117462037&amp;output=embed"></iframe><br /><small><a href="http://maps.google.ca/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=dome&amp;sll=45.383693,-75.697865&amp;sspn=0.125631,0.363579&amp;ie=UTF8&amp;hq=dome&amp;hnear=&amp;ll=45.379161,-75.895958&amp;spn=0.119609,0.363579&amp;z=12&amp;iwloc=A&amp;cid=3745397187117462037" style="color:#0000FF;text-align:left">View Larger Map</a></small></div> -->
+            </div>
+
+            <div class="entry">
+              <p><strong><a href="#">The One Untouchables</a></strong></p>
+				<p>Tuesday 09th February 2010 at 4PM, <a href= "http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=matt+anthony&sll=45.450257,-75.578041&sspn=0.125483,0.363579&ie=UTF8&radius=8.81&filter=0&rq=1&ev=p&hq=matt+anthony&hnear=&ll=45.456518,-75.61409&spn=0.125469,0.363579&z=12&iwloc=A">Matt Anthony Field</a></p>
+			</div>
+			<p class="tags"><strong>Tags:</strong> <a href="#">soccer</a> <a href="#">sports</a> <a href="#">pickup</a> <a href="#">team</a> <a href="#">players</a> <a href="#">group</a> <a href="#">enjoy</a> <a href="#">ball</a></p>
+		</div>
+	</div>
+	<!-- end content -->
+
+	<!-- start sidebar two -->
+	<div id="sidebar2" class="sidebar">
+		<ul>
+			<li>
+				<h2>Login</h2>
+				<div class="post" style="text-align:center">
+                                    <form action="UserController" method="POST">
+                                    <table cellpadding="2" cellspacing="2">
+                                        <tr><td>Email: </td><td><input type="text" name="email" /></td></tr>
+                                        <tr><td>Password: </td><td><input type="password" name="password" /></td></tr>
+                                        <tr><td>&nbsp;</td><td align="right"><input type="submit" name="submit" value="Login" /></td></tr>
+                                        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                                    </table></form>
+                                </div>
+			</li>
+			<li>
+				<h2>Archives</h2>
+				<ul>
+					<li><a href="#">December</a> (23)</li>
+					<li><a href="#">November</a> (31)</li>
+					<li><a href="#">October</a> (31)</li>
+					<li><a href="#">September</a> (30)</li>
+					<li><a href="#">August</a> (31)</li>
+				</ul>
+			</li>
+			<li>
+				<h2>Best Fields By Users</h2>
+                <h3>&nbsp;&nbsp; Winter Season</h3>
+				<ul>
+					<li><a href="#">Lansdowne Park</a></li>
+                    <li><a href="#">Matt Anthony Field</a></li>
+					<li><a href="#">Kanata Soccer Dome</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar two -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+<hr />
+<!-- start footer -->
+<div id="footer">
+	<p>&copy;2007 All Rights Reserved. &nbsp;&bull;&nbsp; Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+</div>
+<!-- end footer -->
+</body>
+</html>

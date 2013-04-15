@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-Mar-2010 4:02:28 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="pickupsoccer" name="DAL.Location" table="location">
+    <id name="locationId" type="java.lang.Integer">
+      <column name="locationID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="fieldName" type="string">
+      <column length="100" name="fieldName" not-null="true"/>
+    </property>
+    <property name="fieldDescription" type="string">
+      <column length="100" name="fieldDescription" not-null="true"/>
+    </property>
+    <property name="fieldAddress" type="string">
+      <column length="100" name="fieldAddress" not-null="true"/>
+    </property>
+    <property name="fieldPhoto" type="binary">
+      <column name="fieldPhoto"/>
+    </property>
+    <set inverse="true" name="games">
+      <key>
+        <column name="locationID"/>
+      </key>
+      <one-to-many class="DAL.Game"/>
+    </set>
+  </class>
+</hibernate-mapping>

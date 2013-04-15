@@ -1,0 +1,300 @@
+<%-- 
+    Document   : CreateGame
+    Created on : 4-Mar-2010, 2:16:47 PM
+    Author     : Renaud
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Tastelessly
+Description: A very light design suitable for community sites and blogs.
+Version    : 1.0
+Released   : 20080122
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Create a Pick up Soccer Game</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<script type="text/javascript" src="scripts/ajaxClient.js"></script>
+<script type="text/javascript" src="scripts/validateLogin.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body onload="resgisterEvents();">
+<!-- start header -->
+<div id="header">
+	<div id="menu">
+		<ul>
+			<li><a href="GameController">Home</a></li>
+			<li class="current_page_item"><a href="GameController?operation=listofGames">Pickup Soccer Games</a></li>
+			<li><a href="#">Best Fields/Locations</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+	<div id="search">
+		<form id="searchform" method="get" action="#">
+			<fieldset>
+			<input id="s" type="text" name="s" value="" class="text" />
+			<input id="x" type="submit" value="Search" class="button" />
+                        <span id="suggestion" style="color:#FFFFFF"></span>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<div id="logo">
+	<h1><a href="#">Pickup Soccer</a></h1>
+	<h2>In Ottawa/Gatineau</h2>
+	</div>
+<!-- end header -->
+<hr />
+<!-- start page -->
+<div id="page">
+
+	<!-- start sidebar one -->
+	<div id="sidebar1" class="sidebar">
+		<ul>
+			<li id="recent-posts">
+				<h2>News</h2>
+				<p class="links"><a href="#" class="comments">Comments (33)</a> &nbsp;&nbsp;&nbsp; <!-- <a href="#" class="permalink">Permalink</a> --></p>
+                                <ul>
+					<li>
+						<h3><a href="#">NATIONAL</a></h3>
+						<h4><a href="#">New Captain for the Team Canada</a></h4>
+						<p> Toronto FC's midfielder Dwayne De Rosario has been announced to drive the National team as the new captain. <a href="#">More&hellip;</a></p>
+					</li>
+					<li>
+						<h3>INTERNATIONAL</h3>
+						<h4><a href="#">Fifa World Cup Official Calendar</a></h4>
+						<p>As everybody is getting excited about the Ultimate Competition happening every four years of a century. The Fifa announced yesterday the <a href="http://www.fifa.com/aboutfifa/calendar/events.html">official calendar</a>! <a href="#">More&hellip;</a></p>
+					</li>
+					<li>
+						<h4><a href="#">CAN 2010</a></h4>
+						<p>Egypt imposed their supremacy over the african continent. They demonstrated incredible skills beating three top teams: QF - Cameroon(3-1), SF - Algeria(4-0), F - Ghana(1-0). The Pharaons are Kings, unfortunately not qualified for the world cup. <a href="#">More&hellip;</a></p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar one -->
+
+	<!-- start content -->
+	<div id="content">
+		<div class="post">
+			
+            <h1 class="title">Schedule a Pickup Game</h1>
+			<p>&nbsp;</p>
+                        <form action="GameController" method="POST">
+            <div style="font-size:12px;text-align:center;width:600px"><table cellpadding="2" cellspacing="2">
+		<!--tr><td>Name: </td><td><input type="text" name="gameId" value="TheWinners" /></td><td></td></tr-->
+		<tr><td>Date: </td><td>
+                        <select name="day">
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                        </select> <select name="month">
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+                        </select> <select name="year">
+                <option value="2010">2010</option>
+                        </select></td></tr>
+                <tr><td>Time: </td><td>
+                        <select name="hour">
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                        </select> :
+                        <select name="minute">
+                <option value="0">00</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                        </select>
+                        <select name="ampm">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+                        </select>
+                        </td><td></td></tr>
+                <tr><td>Composition: </td><td>
+                        <select name="composition">
+                            <option value="Men And Women">Men And Women</option>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                        </select>
+                </td><td></td></tr>
+                <!--tr><td>Age Range: </td><td><input type="text" name="ageRange" value="20"/></td><td></td></tr-->
+                <tr><td>Maximum of players: </td><td><input type="text" name="maxPlayers" value="15"/></td><td></td></tr>
+                <tr><td>Skill Level: </td><td><input type="text" name="skillLevel" value="Advanced"/></td><td></td></tr>
+                <tr><td>Location: </td><td><input type="text" name="field" value="Hull Stadium"/></td><td></td></tr>
+                <tr><td>Field Cost: </td><td><input type="text" name="fieldCost" value="450"/></td><td></td></tr>
+                <tr><td>Address: </td><td><input type="text" name="address" value="42 Bedard"/></td><td></td></tr>
+                <tr><td>City: </td><td><input type="text" name="city" value="Hull"/></td><td></td></tr>
+                <tr><td>Notes: </td><td><input type="textarea" name="comments" value="vrwvrwbrw"/></td><td></td></tr>
+
+				<tr><td></td><td align="right"><input type="submit" name="submit" value="create" /></td><td></td></tr>
+				</table></div>
+                        </form>
+			<p class="tags"><!--<strong>Tags:</strong> <a href="#">soccer</a> <a href="#">sports</a> <a href="#">pickup</a> <a href="#">team</a> <a href="#">players</a> <a href="#">group</a> <a href="#">enjoy</a> <a href="#">ball</a>--></p>
+            
+		</div>
+	</div>
+	<!-- end content -->
+
+	<!-- start sidebar two -->
+	<div id="sidebar2" class="sidebar">
+		<ul>
+			<li>
+				<h2>You are logged in!</h2>
+				<ul>
+					<li><a href="#">Account settings</a> </li>
+					<li><a href="#">My Favorites Games</a>
+                    </li>
+					<li><a href="#">My Reviews</a> </li>
+
+				</ul>
+			</li>
+			<li>
+				<h2>Archives</h2>
+				<ul>
+					<li><a href="#">December</a> (23)</li>
+					<li><a href="#">November</a> (31)</li>
+					<li><a href="#">October</a> (31)</li>
+					<li><a href="#">September</a> (30)</li>
+					<li><a href="#">August</a> (31)</li>
+				</ul>
+			</li>
+			<li>
+				<h2>Best Fields By Users</h2>
+                <h3>&nbsp;&nbsp; Winter Season</h3>
+				<ul>
+					<li><a href="#">Lansdowne Park</a></li>
+                                        <li><a href="#">Matt Anthony Field</a></li>
+					<li><a href="#">Kanata Soccer Dome</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar two -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+<hr />
+<!-- start footer -->
+<div id="footer">
+	<p>&copy;2007 All Rights Reserved. &nbsp;&bull;&nbsp; Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+</div>
+<!-- end footer -->
+</body>
+</html>

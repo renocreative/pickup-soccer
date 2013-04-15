@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-Mar-2010 4:02:28 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="pickupsoccer" name="DAL.Game" table="game">
+    <id name="gameId" type="java.lang.Integer">
+      <column name="gameID"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="DAL.Recurrentgame" fetch="select" name="recurrentgame">
+      <column name="recurrentGameID"/>
+    </many-to-one>
+    <many-to-one class="DAL.User" fetch="select" name="user">
+      <column length="100" name="username"/>
+    </many-to-one>
+    <many-to-one class="DAL.Location" fetch="select" name="location" cascade="save-update">
+      <column name="locationID"/>
+    </many-to-one>
+    <property name="gameStatus" type="java.lang.Integer">
+      <column name="gameStatus"/>
+    </property>
+    <property name="gameState" type="int">
+      <column name="gameState" not-null="true"/>
+    </property>
+    <property name="dateHeure" type="timestamp">
+      <column length="19" name="dateHeure"/>
+    </property>
+    <property name="maxPlayers" type="java.lang.Integer">
+      <column name="maxPlayers"/>
+    </property>
+    <property name="skillLevel" type="string">
+      <column length="100" name="skillLevel"/>
+    </property>
+    <property name="fieldCost" type="java.lang.Float">
+      <column name="fieldCost" precision="12" scale="0"/>
+    </property>
+    <property name="comments" type="string">
+      <column length="100" name="comments"/>
+    </property>
+  </class>
+</hibernate-mapping>

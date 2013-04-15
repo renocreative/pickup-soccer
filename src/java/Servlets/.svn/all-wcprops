@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/Servlets
+END
+UserController.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/pickupsoccer/!svn/ver/9/PickupSoccerApplication/src/java/Servlets/UserController.java
+END
+ModelBinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/Servlets/ModelBinder.java
+END
+AjaxController.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/Servlets/AjaxController.java
+END
+GameController.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/pickupsoccer/!svn/ver/21/PickupSoccerApplication/src/java/Servlets/GameController.java
+END

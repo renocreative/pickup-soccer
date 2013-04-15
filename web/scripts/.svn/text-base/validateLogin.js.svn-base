@@ -1,0 +1,51 @@
+
+    function registerEvents() {
+        //alert("init");
+        var email = window.document.getElementById( "email" );
+        //alert(email);
+        email.addEventListener( "keypress", validate, false );
+
+        var search = window.document.getElementById( "searchInput" );
+        //alert(search);
+
+        search.addEventListener( "keyup", suggest, false );
+    }
+
+    function validate( event ) {
+        alert("validate");
+        //msg = event.target.nodeName + ":: ";
+        //msg = msg + event.type;
+        //alert( msg );
+    }
+
+    function validateForm(){
+        var valid = true;
+        var emailMsgError = "";
+        var passwordMsgError = "";
+
+        //Validate Email
+        var email = window.document.getElementById( "email" );
+
+        if(!checkNotEmpty(email.value)){
+            emailMsgError = "Email cannot be empty";
+            valid = false;
+        }else if(!checkEmail(email.value)){
+            emailMsgError = "Please provide a valid email address";
+            valid = false;
+        }
+
+        //Validate Password
+        var password = window.document.getElementById( "password" );
+
+        if(!checkNotEmpty(password.value)){
+            passwordMsgError = "Password cannot be empty";
+            valid = false;
+        }
+
+        if(!valid){
+            alert("Error during login:\n" + emailMsgError + "\n" + passwordMsgError);
+            return false;
+        }
+        return valid;
+    }
+   

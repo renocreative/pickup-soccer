@@ -1,0 +1,60 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package Servlets;
+
+import DAL.Game;
+import DAL.Location;
+import DAL.Recurrentgame;
+import DAL.User;
+import DAL.Userprofile;
+import java.util.Date;
+import java.util.Map;
+import org.apache.commons.beanutils.BeanUtils;
+
+/**
+ *
+ * @author Renaud
+ */
+public class ModelBinder {
+
+
+    public static Game createGame(Map<String, String[]> gameAttrs, int day, int month, int year, int hour, int minute, String ampm, String fieldName, String address){
+        Location location = new Location(fieldName, "", address);
+
+
+        Game game = new Game();
+                                Date date = new Date();
+
+                                //Insert date info about the game in the date object
+                                date.setDate(day);
+                                date.setMonth(month);
+                                date.setYear(year-1900);
+
+                                if(ampm.equals("PM")){
+                                    hour += 12;
+                                }
+                                if(hour == 24){
+                                    hour = 0;
+                                }
+
+                                //Insert Time in the date object
+                                date.setHours(hour);
+                                date.setMinutes(minute);
+                                date.setSeconds(0);
+
+                                //gameAttrs["dateTime"] = new String[]{date + time};
+
+                                try{
+                                    BeanUtils.populate(game, gameAttrs);
+                                    game.setDateHeure(date);
+                                    game.setLocation(location);
+                                }catch(Exception e){
+                                    //System.err("CreateGame - Populating Bean - IllegalAccessException");
+                                    e.printStackTrace();
+                                }
+                                return game;
+    }
+}
